@@ -1,0 +1,25 @@
+package com.jose;
+
+public class HelloPrincipal {
+
+	public static void main(String[] args) { /*
+												  main porque se puede ejecutar desde la consola y el void significa
+												 que no devuelve nada (no return). Los argumentos son de tipo string
+												 */
+		// TODO Auto-generated method stub
+
+		String texto; // Declaramos una variable tipo String
+		texto = "Hola";
+
+		String nombre = "Jose";
+
+		String concatenar = texto + " " + nombre;
+		
+		int edad = 28;
+		
+		String saludo = texto + " " + nombre+", tienes "+edad+" años";
+
+		System.out.println(saludo);
+	}
+
+}

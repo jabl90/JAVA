@@ -1,0 +1,18 @@
+package com.jose;
+
+import com.jose.models.Usuario; //hemos importado la clase Usuario (hay que darle al cntl espacio)
+
+public class Principal {
+
+	public static void main(String[] args) {
+
+		Usuario pepito = new Usuario(); // tenemos una variable pepito que esta apuntando a un objeto Usuario. Es decir,
+		                                // estamos crweando una instancia, creando un objeto a partir de la defincion
+		
+		pepito.nombre="Jose";
+		pepito.apellido="Barea";
+
+		System.out.println(pepito.nombre+" "+pepito.apellido);
+	}
+
+}
