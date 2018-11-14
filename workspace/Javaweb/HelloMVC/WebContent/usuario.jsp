@@ -35,10 +35,11 @@
      
       <a href="./room?hid=${elUsuario.room.hid}">Acceso a habitacion: ${elUsuario.room.hid}</a>
      
-   
+  
     
      
       
    
 </body>
+<script src="./JS/script.js"></script>
 </html>

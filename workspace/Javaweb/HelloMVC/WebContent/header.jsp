@@ -16,6 +16,7 @@
   <ul>
   <li>Habitaciones</li>
   <li><a href="./listausuarios">Users</a></li>
+   <li><button id="volverbtn">Volver</button></li>
   <li><a href="./logout">Exit</a></li>
   
   </ul>
@@ -24,4 +25,5 @@
   
   </header>
 </body>
+<script src="./JS/script.js"></script>
 </html>
