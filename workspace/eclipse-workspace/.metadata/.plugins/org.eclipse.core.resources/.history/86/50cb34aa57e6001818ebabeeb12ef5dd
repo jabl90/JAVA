@@ -1,0 +1,27 @@
+package com.jose;
+
+public class ModeloAmigo{
+
+	// Estos son los atributos que debe tener todo objeto 'amigo';
+
+	public int id;
+
+	public String nombre;
+
+	public String email;
+
+	public int edad;
+
+	public boolean viveCerca;
+
+	public ModeloAmigo[] misamigos; // La variable misamigos es un array de esa misma clase, y por ende se tiene que
+									// llamar igual
+//Creamos un cosntructor
+	
+	Public Modeloamigo(int idrec) {
+		this.id=idrec;
+	}
+
+	
+
+}

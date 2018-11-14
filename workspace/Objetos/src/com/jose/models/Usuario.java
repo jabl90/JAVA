@@ -9,7 +9,7 @@ public class Usuario {
 	public String apellido;
 	public String email;
 	public int edad;
-	public Direccion dir; // Esto es una composición, estamos componiendo una calse utilizando otras
+	public Direccion dir; // Esto es una composición, estamos componiendo una clase utilizando otras
 							// clases. Es decir estamos utlizando la clase Direccion para componer la clase usuario.
 
 	public String getDatosCompletos() { // Estamos creando un método. Es buena practica que los metodos empiecen por un

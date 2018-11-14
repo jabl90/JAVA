@@ -1,0 +1,43 @@
+package com.jose;
+
+import com.jose.Principal;
+
+public class ModeloAmigo {
+
+	// Estos son los atributos que debe tener todo objeto 'amigo';
+
+	public int id;
+
+	public String nombre;
+
+	public String email;
+
+	public int edad;
+
+	public boolean viveCerca;
+
+	public String[] amigo;
+
+	public String misamigos(){
+		
+     String [] amigo = new String[4];
+     
+     amigo[0]="juan";
+     amigo[1]="petra";
+     amigo[2]="luisa";
+     amigo[3]="lola";
+     
+     for(String misamigos : amigo)
+     
+    
+     amigo[i]=this.id+" "+this.nombre+" "+this.email+" "+this.edad+" "+this.viveCerca;
+     
+     
+ 
+		  System.out.print(misamigos);
+     
+		return amigo[];
+		
+	}
+
+}
