@@ -7,10 +7,26 @@ import com.jose.models.Usuario;
 
 public class BBDD {
 
+	private static BBDD instancia = null; //// hemos hecho una instancia, tiene ser privada y del mismo tipo de la clase
+											//// SINGLETON
+
 	public ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	public ArrayList<Room> habitaciones = new ArrayList<Room>();
 
-	public BBDD() { // desde el contructir llamamos alos metodos
+	public static final BBDD getinstancia() { // Es un meotod publico que me devuuleve la instancia. No se puede
+												// utilizar el this porque es stático y es comun a todos los obejtos. No
+												// necesita un new
+												// porque ya qestoy creando aqui la instancia. Creamos directamente le
+												// bojeto con el método SINGLETON
+		if (instancia == null) {
+			instancia = new BBDD();
+		}
+
+		return instancia;
+	}
+
+	private BBDD() {// desde el contructir llamamos alos metodos. //hacemso el constructor privado
+					// nadie puede hacer new BBDD
 
 		this.fillUsuarios();
 		this.fillhabitaciones();
@@ -93,5 +109,18 @@ public class BBDD {
 		}
 
 		return existeusuario;
+	}
+
+	public int insertaUsuario(Usuario newuser) {
+
+		int nuevoId = 0;
+
+		nuevoId = this.usuarios.size() + 1; // simulamos que la bd asigna un id consecutivo
+		newuser.setId(nuevoId);
+		
+		this.usuarios.add(newuser); //añadimos el usuario
+		
+		return nuevoId;
+
 	}
 }

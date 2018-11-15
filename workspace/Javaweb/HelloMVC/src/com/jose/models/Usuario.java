@@ -2,18 +2,16 @@ package com.jose.models;
 
 //ESto seria el modelo
 public class Usuario {
-	
 
 	private int id;
-	
+
 	private String name;
-	
+
 	private String email;
-	
+
 	private String password;
-	
+
 	private Room room;
-	
 
 	public Usuario(int id, String name, String email, String password, Room room) {
 		super();
@@ -55,6 +53,7 @@ public class Usuario {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public Room getRoom() {
 		return room;
 	}
@@ -63,8 +62,25 @@ public class Usuario {
 		this.room = room;
 	}
 
-	
+	// Valida que los campos sean correctos, bien formados y tengan valor
+	public boolean esValido(String passwordrecibidoconfirmado) {
 
-	
+		boolean isValid = true;
+
+		if (this.email == null || this.email.equals("") || this.email.indexOf("@") <= 0)
+			isValid = false;
+
+		if (this.name == null || this.name.equals("") || this.name.matches("(.*)?[0-9](.*)?"))
+			isValid = false; // Introducimos la expresion regulada que nos machea con el nombre que hemos
+		// introducido, debe contener nombres y letras
+
+		if (this.password == null || this.password.equals(""))
+			isValid = false;
+
+		if (!this.password.equals(passwordrecibidoconfirmado))
+			isValid = false;
+
+		return isValid;
+	}
 
 }

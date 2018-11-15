@@ -30,12 +30,9 @@ public class UsuarioServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-if(session.getAttribute("usuario")!=null) {
+if(session.getAttribute("usuario")!=null) { //Aqui cogemos (get) el atributo usuario que establecimos en el loginservlet
 			
-			
-			
-
-			
+				
 		
 		//Vamos acapturar lso parámetros. Es una variable que recuera lla variable qu estoy enviando
 		String idusuario = request.getParameter("id"); //el sErvlet espera recibir un parámetro(identificador)
@@ -44,7 +41,7 @@ if(session.getAttribute("usuario")!=null) {
 		//Vamos a declarar una base de datos, llamamos al constructor y con ello a todos los metodos que contienen los datos
 		
 		int idU=Integer.parseInt(idusuario);
-		BBDD bbdd = new BBDD();
+		BBDD bbdd =BBDD.getinstancia(); //Accedemos a la instancia, como es static no tenemos que crear el objeto aqui
 		
 		Usuario pepe = bbdd.getUsuarioByID(idU);  // el get solo acepta int
 

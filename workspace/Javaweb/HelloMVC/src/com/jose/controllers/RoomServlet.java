@@ -3,7 +3,7 @@ package com.jose.controllers;
 import java.io.IOException;
 
 import com.jose.database.BBDD;
-import com.jose.models.Room;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,14 +23,14 @@ public class RoomServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		
-if(session.getAttribute("usuario")!=null) {
+if(session.getAttribute("usuario")!=null) { //Aqui cogemos (get) el atributo usuario que establecimos en el loginservlet
 
 		String idhabitacion = request.getParameter("hid"); // el servlet esta esperando un parámetro en el request
 															// llamado hid
 		System.out.println("HID recibido:" + idhabitacion);
 		int idH = Integer.parseInt(idhabitacion);
 
-		BBDD bbdd = new BBDD(); // Creamos una variable que contiene la base de datos
+		BBDD bbdd =BBDD.getinstancia(); // Creamos una variable que contiene la base de datos
 
 		request.setAttribute("lahabitacion", bbdd.gethabitacion(idH)); // Nos da una habitacion en funcion del hid. EL
 																		// atributo "lahabitacion" lo estomos creando

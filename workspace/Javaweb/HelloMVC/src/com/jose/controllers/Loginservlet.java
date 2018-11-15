@@ -1,6 +1,7 @@
 package com.jose.controllers;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,8 +11,10 @@ import javax.servlet.http.HttpSession;
 
 import com.jose.database.BBDD;
 
+//El  servlet es una clase que lo que hace es responder a peticiones
+
 @WebServlet("/login")
-public class loginservlet extends HttpServlet {
+public class Loginservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 //Cuando entramos en GET pedimos el metodo doGet, nos devuelve informacion
@@ -32,6 +35,7 @@ public class loginservlet extends HttpServlet {
 		// recoge en las variables emailrecibido y password recibido el email y password
 		// que estoy enviando
 
+		//pregunta si existe un usario con ese email y password
 		String emailrecibido = request.getParameter("email"); // El nombre del parametrose corresponde con el name del
 																// input
 		String passwordrecibido = request.getParameter("password");
@@ -42,7 +46,7 @@ public class loginservlet extends HttpServlet {
 		
 		//instanciamos la base de datos
 		
-		BBDD bd = new BBDD();
+		BBDD bd =BBDD.getinstancia();
 
 		// decidir si existe usuario con ese email y password, entrar en lista usuarios (zona privada),
 		// y si no volver a mostrar formulario. De modo que el servlet va a decidir

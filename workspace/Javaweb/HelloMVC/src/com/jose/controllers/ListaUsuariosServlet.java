@@ -26,10 +26,10 @@ public class ListaUsuariosServlet extends HttpServlet {
 		
         //Si no lo redirijo a login. dE manera que aunque intente acceder a lista usuarios, me va a redirigir a login
   		
-		if(session.getAttribute("usuario")!=null) {
+		if(session.getAttribute("usuario")!=null) { //Aqui cogemos (get) el atributo usuario que establecimos en el loginservlet
 			
 			// Acedemos a la base de datos
-			BBDD bbdd = new BBDD();
+			BBDD bbdd =BBDD.getinstancia();
 			// peticion
 			request.setAttribute("losUsuarios", bbdd.usuarios);
 		
