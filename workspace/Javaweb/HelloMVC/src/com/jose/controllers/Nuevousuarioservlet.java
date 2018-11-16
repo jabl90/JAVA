@@ -19,8 +19,8 @@ public class Nuevousuarioservlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		ArrayList<Room> habitaciones =BBDD.getinstancia().habitaciones;
+
+		ArrayList<Room> habitaciones = BBDD.getinstancia().habitaciones;
 
 		request.setAttribute("lashabitaciones", habitaciones);
 		request.getRequestDispatcher("/nuevousuario.jsp").forward(request, response);
@@ -37,19 +37,38 @@ public class Nuevousuarioservlet extends HttpServlet {
 		String passwordrecibidoconfirmado = request.getParameter("confirmarpassword");
 		String habitacionelegida = request.getParameter("habitacion");
 
-		System.out.println("Nombre:"+nombrerecibido+" email: "+emailrecibido+" password:"+passwordrecibido+" confirmarpasswrod: "+passwordrecibidoconfirmado+"haitacion:"+habitacionelegida);
-		
-		Usuario nuevouser = new Usuario(0, nombrerecibido, emailrecibido, passwordrecibido, null);
+		int habitacionelegidaId = 0; // Para poder pasar la habitacionelegida como
+										// parámetro en el método gethabitacion en el ue
+										// el parametro debe ser de tipo int
+		try {
+			habitacionelegidaId = Integer.parseInt(habitacionelegida);
+		} catch (Exception e) { // e es una variable local de tipo Exception que contiene la excepcion
 
-		if ( nuevouser.esValido(passwordrecibidoconfirmado) ) { //Hemos creado u n metodo paracomprobar si el usuario es valido// si es diferente de null y no es vacio //En un if solo puedes poner booleanos,
-									// por eso el programa sabe al crear el método que es de tipo boolean
+			System.out.println("Excepcion!!" + e.getMessage());
+
+		}
+
+		System.out.println("Nombre:" + nombrerecibido + " email: " + emailrecibido + " password:" + passwordrecibido
+				+ " confirmarpassword: " + passwordrecibidoconfirmado + "habitacion:" + habitacionelegida);
+
+		Usuario nuevouser = new Usuario(0, nombrerecibido, emailrecibido, passwordrecibido,
+				BBDD.getinstancia().gethabitacion(habitacionelegidaId)); // apuntamos al metodo que hay en la base de
+																			// datos que nos indica la habitacion por su
+																			// identifcador, hay que transformar el
+																			// parámetro en un int
+
+		if (nuevouser.esValido(passwordrecibidoconfirmado)) { // Hemos creado u n metodo paracomprobar si el usuario es
+																// valido// si es diferente de null y no es vacio //En
+																// un if solo puedes poner booleanos,
+			// por eso el programa sabe al crear el método que es de tipo boolean
 
 			// continuar e intrudcir nuevouser en base de datos
-			
+
 			BBDD db = BBDD.getinstancia();
 			db.insertaUsuario(nuevouser);
-			//redirijo a listadeusuarios
-			response.sendRedirect("listausuarios");
+			// redirijo a listadeusuarios
+			response.sendRedirect("listausuarios"); // Va al navegador y de ahi hace la peticion al servlet
+													// listadeusuarios (mirar esquema de slack)
 		} else {
 			request.setAttribute("mensajeerror", "Datos incorrectos");
 			request.setAttribute("newusuario", nuevouser);

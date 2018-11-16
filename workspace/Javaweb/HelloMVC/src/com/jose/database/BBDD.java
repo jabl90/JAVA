@@ -13,11 +13,13 @@ public class BBDD {
 	public ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	public ArrayList<Room> habitaciones = new ArrayList<Room>();
 
-	public static final BBDD getinstancia() { // Es un meotod publico que me devuuleve la instancia. No se puede
-												// utilizar el this porque es stático y es comun a todos los obejtos. No
+	public static final BBDD getinstancia() { // Es un metodo publico que me devuuleve la instancia. No se puede
+												// utilizar el this porque es stático y es comun a todos los objetos. No
 												// necesita un new
-												// porque ya qestoy creando aqui la instancia. Creamos directamente le
-												// bojeto con el método SINGLETON
+												// porque ya estoy creando aqui la instancia. Creamos directamente le
+												// objeto con el método SINGLETON Es util que cuando muchos usuarios
+												// hacen la misma peticion. Esto nos permite crear objetos unicos que no
+												// se desaparezcan cuando se destruye el sevlet.
 		if (instancia == null) {
 			instancia = new BBDD();
 		}
@@ -25,7 +27,7 @@ public class BBDD {
 		return instancia;
 	}
 
-	private BBDD() {// desde el contructir llamamos alos metodos. //hacemso el constructor privado
+	private BBDD() {// desde el contructor llamamos alos metodos. //hacemso el constructor privado
 					// nadie puede hacer new BBDD
 
 		this.fillUsuarios();
@@ -117,10 +119,23 @@ public class BBDD {
 
 		nuevoId = this.usuarios.size() + 1; // simulamos que la bd asigna un id consecutivo
 		newuser.setId(nuevoId);
-		
-		this.usuarios.add(newuser); //añadimos el usuario
-		
+
+		this.usuarios.add(newuser); // añadimos el usuario
+
 		return nuevoId;
+
+	}
+	
+	public int insertaNuevaHabitacion(Room nuevahab) {
+
+		int nuevoHid = 0;
+
+		nuevoHid = this.habitaciones.size() + 1; // simulamos que la bd asigna un hid consecutivo
+		nuevahab.setHid(nuevoHid);
+
+		this.habitaciones.add(nuevahab); // añadimos la habitacion
+
+		return nuevoHid;
 
 	}
 }

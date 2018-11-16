@@ -41,6 +41,21 @@ public class Room {
 		this.metros = metros;
 	}
 	
-	
+	public boolean esValido() {
+
+		boolean isValid = true;
+
+		if (this.calle == null || this.calle.equals("")) isValid = false;
+		
+		if (this.calle.matches("([a-zA-Z]*)?[0-9](.*)?")) isValid = false; 
+		
+		if(this.metros<=0) isValid = false;
+		
+		// Introducimos la expresion regulada que nos machea con el nombre que hemos
+		// introducido, debe contener nombres y letras
+
+
+		return isValid;
+	}
 
 }

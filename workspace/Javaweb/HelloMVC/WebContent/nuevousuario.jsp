@@ -14,6 +14,7 @@
 	<h1>Nuevo Usuario</h1>
 
 	<div class="error">${mensajeerror}</div>
+	<p></p>
 
 	<form action="" method="POST">
 		<!-- Para proteger nuestros datos metods el método post, los encripta -->
@@ -24,6 +25,7 @@
 			<!-- el name es el nombre del parámetro que voy a recibir en el servlet, con el value accedemos al objeto usuario y tras el puntoa las propiedades de las clase Usuario -->
 
 		</div>
+		<p></p>
 
 		<div>
 			<input type="text" placeholder=" Email" name="email" id="email"
@@ -31,12 +33,16 @@
 			<!-- el name es el nombre del parámetro que voy a recibir en el servlet -->
 
 		</div>
+		
+		<p></p>
 
 		<div>
 			<input type="password" placeholder=" Password" name="password"
 				maxlength="9" pattern="[a-zA-Z0-9]*" id="password" value="" />
 
 		</div>
+		
+		<p></p>
 
 		<div>
 			<input type="password" placeholder=" Confirmarpassword"
@@ -52,10 +58,12 @@
 			<label id="habitacion">Elige habitación: </label> <select
 				name="habitacion" id="habitacion">
 				<c:forEach var="unaHab" items="${lashabitaciones}">
-					<option value="${unaHab.hid}">${unaHab.calle}</option>
+					<option value="${unaHab.hid}">${unaHab.calle}</option> <!-- Crear un enlace para una nueva habitacion. Añadir una nueva habitacion -->
 				</c:forEach>
 			</select>
 		</div>
+		
+		<a href="./nuevahabitacion">Elegir nueva habitacion</a> <!-- apunta a la direccion del servlet de nueva habitacion -->
 
 
 		<p></p>

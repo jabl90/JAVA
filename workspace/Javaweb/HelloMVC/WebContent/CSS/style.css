@@ -1,9 +1,10 @@
 body{
 	
-	margin:100px;
+	margin:200px;
 	padding:0px;
 	font-family:Verdana;
 	font-size: 12px;
+	border: solid black 1px;
 }
 
 header > ul{
@@ -13,7 +14,7 @@ h1{
 	
 	font-size: 2em;
 	color: blue;
-	margin-left: 10px;
+	
 	
 
 }
@@ -48,5 +49,8 @@ ul> a> li> div{
 .error{
 	color: red;
 }
+
+
+
 
 

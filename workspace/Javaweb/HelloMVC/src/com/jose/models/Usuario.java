@@ -79,6 +79,8 @@ public class Usuario {
 
 		if (!this.password.equals(passwordrecibidoconfirmado))
 			isValid = false;
+		
+		if(this.room==null) isValid=false;
 
 		return isValid;
 	}
