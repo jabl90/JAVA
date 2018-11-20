@@ -13,15 +13,16 @@
 
 	<h1>Nuevo Usuario</h1>
 
-	<div class="error">${mensajeerror}</div>
+	<div id="errormensaje" class="error">${mensajeerror}</div>
 	<p></p>
 
-	<form action="" method="POST">
+	<form id="registerform" action="" method="POST" novalidate>
 		<!-- Para proteger nuestros datos metods el método post, los encripta -->
 
 		<div>
 			<input type="text" placeholder=" Nombre y apellido" name="nombre"
-				id="nombre" value="${newusuario.name}" />
+				id="nombre" value="${newusuario.name}" required/>
+				 <div id="errornombre" class="hide">Nombre incorrecto</div>
 			<!-- el name es el nombre del parámetro que voy a recibir en el servlet, con el value accedemos al objeto usuario y tras el puntoa las propiedades de las clase Usuario -->
 
 		</div>
@@ -29,7 +30,8 @@
 
 		<div>
 			<input type="text" placeholder=" Email" name="email" id="email"
-				value="${newusuario.email}" />
+				value="${newusuario.email}" required/>
+				 <div id="erroremail" class="hide">Email incorrecto</div>
 			<!-- el name es el nombre del parámetro que voy a recibir en el servlet -->
 
 		</div>
@@ -37,8 +39,8 @@
 		<p></p>
 
 		<div>
-			<input type="password" placeholder=" Password" name="password"
-				maxlength="9" pattern="[a-zA-Z0-9]*" id="password" value="" />
+			<input type="password" placeholder=" Password" name="password"  pattern="[a-zA-Z0-9]*" id="password" value="" required/>
+				 <div id="errorpassword" class="hide">El password es incorrecto</div>
 
 		</div>
 		
@@ -46,8 +48,9 @@
 
 		<div>
 			<input type="password" placeholder=" Confirmarpassword"
-				name="confirmarpassword" maxlength="9" pattern="[a-zA-Z0-9]*"
-				id="confirmarpassword" />
+				name="confirmarpassword"  pattern="[a-zA-Z0-9]*"
+				id="confirmarpassword" required/>
+				 <div id="errorconfirmar" class="hide">El password no coincide</div>
 
 		</div>
 
@@ -69,11 +72,13 @@
 		<p></p>
 
 		<div>
-			<button>Darse de alta</button>
+			<button id="validform">Darse de alta</button>
 
 		</div>
 
 	</form>
 
 </body>
+<script src="./JS/jquery-3.3.1.min.js"></script>
+<script src="./JS/validarFormulario.js"></script>
 </html>

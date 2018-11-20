@@ -12,6 +12,7 @@ public class BBDD {
 
 	public ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	public ArrayList<Room> habitaciones = new ArrayList<Room>();
+	
 
 	public static final BBDD getinstancia() { // Es un metodo publico que me devuuleve la instancia. No se puede
 												// utilizar el this porque es stático y es comun a todos los objetos. No
@@ -89,7 +90,7 @@ public class BBDD {
 
 		for (Room lahabitacion : habitaciones) {
 
-			if (lahabitacion.getHid() == hid) { // si la habitacion coincide con el getter de la clase Roon getHig y el
+			if (lahabitacion.getHid() == hid) { // si la habitacion coincide con el getter de la clase Room getHid y el
 												// el identificador
 				habitacionusuario = lahabitacion;
 				break; // sale del for, para que cuando encuentre nuestro usuario no siga buscando
@@ -97,7 +98,7 @@ public class BBDD {
 		}
 		return habitacionusuario; // devuelve la habitacion en la que está el usuario
 	}
-
+//Va a comprobar si existe un usuario por email y password. Lo vamos a lamar en el servlet de login
 	public boolean existeUsuarioPorEmailyPass(String emailrecibido, String passwordrecibido) {
 
 		boolean existeusuario = false;
@@ -112,7 +113,34 @@ public class BBDD {
 
 		return existeusuario;
 	}
+	//Este método hace lo mismo que el anterior pero sólo va a comprobar si existe el email en el servlet de nuevousuario
+	public boolean existeEmail(String emailrecibido) {
 
+		boolean existeemail = false;
+
+		for (Usuario unEmail : this.usuarios) {
+
+			if (unEmail.getEmail().equals(emailrecibido)) {
+				existeemail = true;
+				break;
+			}
+		}
+
+		return existeemail;
+	}
+	
+	public boolean borrarUser(int idInt) {
+
+		for (Usuario aUsuario : this.usuarios) {
+
+			if (aUsuario.getId()==idInt) {
+				this.usuarios.remove(aUsuario);
+				break;
+			}
+		}
+
+		return true;
+	}
 	public int insertaUsuario(Usuario newuser) {
 
 		int nuevoId = 0;
@@ -123,9 +151,8 @@ public class BBDD {
 		this.usuarios.add(newuser); // añadimos el usuario
 
 		return nuevoId;
-
+        
 	}
-	
 	public int insertaNuevaHabitacion(Room nuevahab) {
 
 		int nuevoHid = 0;

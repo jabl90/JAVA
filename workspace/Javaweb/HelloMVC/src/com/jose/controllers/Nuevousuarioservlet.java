@@ -37,7 +37,7 @@ public class Nuevousuarioservlet extends HttpServlet {
 		String passwordrecibidoconfirmado = request.getParameter("confirmarpassword");
 		String habitacionelegida = request.getParameter("habitacion");
 
-		int habitacionelegidaId = 0; // Para poder pasar la habitacionelegida como
+		int habitacionelegidaId = 0;   // Para poder pasar la habitacionelegida como
 										// parámetro en el método gethabitacion en el ue
 										// el parametro debe ser de tipo int
 		try {
@@ -48,24 +48,24 @@ public class Nuevousuarioservlet extends HttpServlet {
 
 		}
 
-		System.out.println("Nombre:" + nombrerecibido + " email: " + emailrecibido + " password:" + passwordrecibido
-				+ " confirmarpassword: " + passwordrecibidoconfirmado + "habitacion:" + habitacionelegida);
-
 		Usuario nuevouser = new Usuario(0, nombrerecibido, emailrecibido, passwordrecibido,
 				BBDD.getinstancia().gethabitacion(habitacionelegidaId)); // apuntamos al metodo que hay en la base de
 																			// datos que nos indica la habitacion por su
 																			// identifcador, hay que transformar el
 																			// parámetro en un int
+		BBDD bd =BBDD.getinstancia();
 
-		if (nuevouser.esValido(passwordrecibidoconfirmado)) { // Hemos creado u n metodo paracomprobar si el usuario es
+		 
+		
+		if (nuevouser.esValido(passwordrecibidoconfirmado)&& !bd.existeEmail(emailrecibido)) { // Hemos creado u n metodo paracomprobar si el usuario es
 																// valido// si es diferente de null y no es vacio //En
 																// un if solo puedes poner booleanos,
 			// por eso el programa sabe al crear el método que es de tipo boolean
 
 			// continuar e intrudcir nuevouser en base de datos
 
-			BBDD db = BBDD.getinstancia();
-			db.insertaUsuario(nuevouser);
+		
+			bd.insertaUsuario(nuevouser);
 			// redirijo a listadeusuarios
 			response.sendRedirect("listausuarios"); // Va al navegador y de ahi hace la peticion al servlet
 													// listadeusuarios (mirar esquema de slack)

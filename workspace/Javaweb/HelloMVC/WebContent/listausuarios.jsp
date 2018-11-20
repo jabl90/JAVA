@@ -13,22 +13,23 @@
 <body>
 	<!-- Tenemos que conectar el servlet con esta plantilla, vamos autiliar el request en el servlet
    El $ indica que el  -->
-<jsp:include page="./header.jsp"></jsp:include>
+	<jsp:include page="./header.jsp"></jsp:include>
 
 	<h1>Usuarios</h1>
 
 	<ul>
-<!-- Hemos incorpaorado la libreria jsp para incorporar tag en plantillas que pueden iterar sobre una 
+		<!-- Hemos incorpaorado la libreria jsp para incorporar tag en plantillas que pueden iterar sobre una 
     variable y repetir para todos los usuarios un trozo de código html  -->
-		<c:forEach var="unUsuario" items="${losUsuarios}">  
-		
-     <li>
-     <a href="./usuario?id=${unUsuario.id}"> <!-- Para mostras con una misma plantilla la informacion de un usuario en concreto -->
-     
-      <div id="id">( ${unUsuario.id} )</div>
-      <div id="nombre">${unUsuario.name}</div>
-     </a>
-     </li>	
+		<c:forEach var="unUsuario" items="${losUsuarios}">
+
+			<li>
+			<a href="./usuario?id=${unUsuario.id}"> <!-- Para mostras con una misma plantilla la informacion de un usuario en concreto -->
+
+					<div id="id">( ${unUsuario.id} )</div>
+					<div id="nombre">${unUsuario.name}</div>
+			</a> 
+			<a href="./borrarusuario?id=${unUsuario.id}">Borrar</a>
+			</li>
 		</c:forEach>
 
 	</ul>

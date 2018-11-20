@@ -1,0 +1,10 @@
+<web-app version="3.1">
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>AmigoAppServlet</servlet-name>
+  	<display-name>AmigoAppServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.jose.controllers.AmigoAppServlet</servlet-class>
+  </servlet>
+  
+</web-app>

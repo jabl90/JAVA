@@ -1,5 +1,7 @@
 package com.jose.models;
 
+import com.jose.database.BBDD;
+
 //ESto seria el modelo
 public class Usuario {
 
