@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.andresbank.models.Cliente;
 import com.andresbank.models.Cuenta;
@@ -87,4 +88,38 @@ public class ClienteDAO {
 		return resCuenta;
 
 	}
+
+	public Cliente getUserByDNI(String dnisesion) throws SQLException {
+		
+		Cliente resCliente = null;
+
+		String url = "jdbc:mysql://localhost/andresbank"; // url de nuestra base de datos
+
+		// Hacemos la conexion con el servidor(base de datos) y luego hacemos peticiones
+		Connection conn = DriverManager.getConnection(url, "root", "root");
+		// Enviamos una orden a la base de datos
+		String sql = "SELECT uid, nombre, dni, pin, nomina FROM `cliente` WHERE dni=?";
+		PreparedStatement psmt = conn.prepareStatement(sql);
+		psmt.setString(1, dnisesion);
+		
+
+		ResultSet rs = psmt.executeQuery(); // nos devuelve el resultado. Es un tipo muy especial de aaray
+		System.out.println("ResultSet:" + rs);
+
+		if(rs.next()) {
+
+			resCliente = new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+			System.out.println("ResultSet: " + rs.getInt(1) + "::" + rs.getString(2) + "::" + rs.getString(3) + "::"
+					+ rs.getString(4));
+			
+			
+		}
+		rs.close();
+		psmt.close();
+		conn.close(); // verificamos que la conexion se cierra
+
+		return resCliente;
+		
+	}
+	
 }
