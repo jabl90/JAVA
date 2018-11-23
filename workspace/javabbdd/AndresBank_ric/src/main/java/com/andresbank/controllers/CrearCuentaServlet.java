@@ -53,7 +53,7 @@ public class CrearCuentaServlet extends HttpServlet {
 																										// el DAO
 				                                                                                       // también tiene
 				                                                                                       // que ser int
-				if (newCid > 0) {
+				if (newCid > 0) {  //Este fragmento de código es el que decide
 
 					response.sendRedirect("cuentas");
 				} else {

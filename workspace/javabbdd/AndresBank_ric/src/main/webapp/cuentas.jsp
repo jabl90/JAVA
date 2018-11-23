@@ -14,7 +14,7 @@
 	
 	<ul>
 	<c:forEach var="unaCuenta" items="${lista_cuentas}">
-		<li>${unaCuenta.nombre} |IBAN: ${unaCuenta.numero} | ${unaCuenta.saldo}</li>
+		<li>${unaCuenta.nombre} |IBAN: ${unaCuenta.numero} | ${unaCuenta.saldo}</li>  <a href="./editarcuenta?cid=">Editar Cuenta</a>
 	</c:forEach>
 	</ul>
 	<a href="./crearcuenta">Crear Cuenta</a>

@@ -98,7 +98,7 @@ public class ClienteDAO {
 		// Hacemos la conexion con el servidor(base de datos) y luego hacemos peticiones
 		Connection conn = DriverManager.getConnection(url, "root", "root");
 		// Enviamos una orden a la base de datos
-		String sql = "SELECT uid, nombre, dni, pin, nomina FROM `cliente` WHERE dni=?";
+		String sql = "SELECT uid, nombre, dni, pin, nomina FROM `cliente` WHERE dni=? LIMIT 1";
 		PreparedStatement psmt = conn.prepareStatement(sql);
 		psmt.setString(1, dnisesion);
 		
