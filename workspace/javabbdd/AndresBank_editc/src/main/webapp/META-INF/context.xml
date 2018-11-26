@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Context>
+<!-- Nos permite definir los recursos y con ello el pull de conexiones -->
+<Context>
+    <!-- Specify a JDBC datasource -->
+    <Resource name="jdbc/andresbbdd" auth="Container"
+        type="javax.sql.DataSource" username="jabl" password="_jabl90_"
+        driverClassName="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://localhost/andresbank"
+        maxActive="10" maxIdle="4" />   <!-- El numero maximo de conexiones activas van a ser 10, va a ser el máximo que va a soportae TOmcat. De esas 10, como máximo puede haber 4 apklicaciones ociosas (que no esten siendo utilizadas). -->
+</Context>

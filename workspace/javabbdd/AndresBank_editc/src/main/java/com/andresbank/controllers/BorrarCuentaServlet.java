@@ -26,7 +26,10 @@ public class BorrarCuentaServlet extends HttpServlet {
 				int cdint =Integer.parseInt(cidrec);
 	
 				boolean borrarMiCuenta = CuentaDAO.getInstance().borrarCuenta(cdint);
-				response.sendRedirect("cuentas");
+				if(borrarMiCuenta==true) {
+					response.sendRedirect("cuentas");
+				}
+				
 			} catch (Exception e) {
 				System.out.println("Excepcion:"+e.getMessage());
 			}
@@ -34,8 +37,7 @@ public class BorrarCuentaServlet extends HttpServlet {
 			request.getRequestDispatcher("/cuentas.jsp").forward(request, response);
 		} else {
 			
-			request.setAttribute("mensaje_error",
-					"La cuenta no se ha borrado");
+			request.setAttribute("mensaje_error","La cuenta no se ha borrado");
 		}
 
 	}

@@ -158,44 +158,41 @@ public class CuentaDAO {
 		return todoOk;
 	}
 
-	public boolean borrarCuenta(int cdInt) throws SQLException {
-		boolean seBorra = false;
+	public boolean borrarCuenta(int cidInt) throws SQLException {
+		boolean todoOk = false;
 
 		String url = "jdbc:mysql://localhost/andresbank";
 
 		Connection conn = DriverManager.getConnection(url, "root", "root");
 
-		try {
-			String sql = "DELETE FROM cliente_cuenta WHERE cid=?";
-			PreparedStatement psmt = conn.prepareStatement(sql);
+		conn.setAutoCommit(false);
 
-			psmt.setInt(1, cdInt);
+		try {
+			String sql = "DELETE FROM cliente_cuenta WHERE cuenta=?";
+			PreparedStatement psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, cidInt);
 
 			psmt.executeUpdate();
-
 			psmt.close();
 
 			sql = "DELETE FROM cuenta WHERE cid=?";
 			psmt = conn.prepareStatement(sql);
-
-			psmt.setInt(4, cdInt);
+			psmt.setInt(1, cidInt);
 
 			psmt.executeUpdate();
-
-			seBorra = true;
+			todoOk = true;
 
 			psmt.close();
 			conn.commit();
 		} catch (Exception e) {
-
-			System.out.println(("Excep tx:" + e.getMessage()));
+			System.out.println("Excep Tx:" + e.getMessage());
 			conn.rollback();
 			throw new SQLException();
-		} finally {
+		}finally {
 			conn.close();
 		}
-			return seBorra;
 
-		}
+		return todoOk;
 	}
 
+}
