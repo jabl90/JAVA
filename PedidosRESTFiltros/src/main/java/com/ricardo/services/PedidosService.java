@@ -23,6 +23,7 @@ import com.netmind.DAO.UsuarioDAO;
 import com.ricardo.models.Pedido;
 import com.ricardo.models.StatusMessage;
 import com.ricardo.models.Usuario;
+import com.ricardo.persistence.PedidosEntityManager;
 
 @Path("/pedidos")
 public class PedidosService extends JSONService {
@@ -42,12 +43,11 @@ public class PedidosService extends JSONService {
 	@Produces("application/json")
 	public Response getPedido() {
 		//logger.log(Level.INFO, "token:" + token);
-		
+		PedidosEntityManager pm=PedidosEntityManager.getInstance();
+		List<Pedido> pedidosadevolver=pm.getPedidos();
 
-			StatusMessage statusMessage = new StatusMessage();
-			statusMessage.setStatus(Status.FORBIDDEN.getStatusCode());
-			statusMessage.setMessage("Access Denied for this functionality !!!");
-			return Response.status(Status.FORBIDDEN.getStatusCode()).entity(statusMessage).build();
+			
+			return Response.status(200).entity(pm.getPedidos()).build();
 		}
 	
 	

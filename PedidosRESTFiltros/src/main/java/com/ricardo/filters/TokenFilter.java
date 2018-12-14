@@ -19,7 +19,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import com.ricardo.models.StatusMessage;
 import com.ricardo.services.JSONService;
 
-@WebFilter(filterName = "TokenFilter", urlPatterns = { "/api/pedidos/*" }) //el flitro esta anotado, su patrçon en la lista que vamos a filtrar
+//@WebFilter(filterName = "TokenFilter", urlPatterns = { "/api/pedidos/*" }) //el flitro esta anotado, su patrçon en la lista que vamos a filtrar
 public class TokenFilter implements Filter {
 	private static final Logger logger = Logger.getLogger(TokenFilter.class.getName());
 
